@@ -27,7 +27,9 @@
   <td>Passo-a-passo</td>
   <td>1. Acessar a página inicial (https://www.saucedemo.com/v1/).<br />
   2. Preencher o campo username.<br />
-  3. Preencher o campo password</td>
+  3. Preencher o campo password.<br />
+  4. Clicar em Login
+  </td>
   </tr>
   <tr class="odd">
   <td>Resultado esperado</td>
