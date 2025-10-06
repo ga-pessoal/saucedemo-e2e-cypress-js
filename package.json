@@ -1,0 +1,22 @@
+{
+  "name": "saucedemo-e2e-cypress",
+  "version": "1.0.0",
+  "description": "Testes automatizados da plataforma SauceDemo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ga-pessoal/saucedemo-e2e-cypress-js.git"
+  },
+  "author": "Gabriel Mattos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ga-pessoal/saucedemo-e2e-cypress-js/issues"
+  },
+  "homepage": "https://github.com/ga-pessoal/saucedemo-e2e-cypress-js#readme",
+  "devDependencies": {
+    "cypress": "^15.3.0"
+  }
+}
