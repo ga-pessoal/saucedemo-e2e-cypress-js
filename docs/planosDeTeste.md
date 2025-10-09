@@ -54,21 +54,21 @@ O foco será em Testes End-to-End (E2E), simulando a jornada completa do usuári
 
 ### 4.2. Tipos de Teste
 
-- Testes Funcionais: Para validar se cada funcionalidade se comporta conforme o esperado.
-- Testes de UI/Layout: Validações visuais para garantir que os componentes da interface são renderizados corretamente.
-- Testes de Regressão: A suíte de automação será utilizada para garantir que novas funcionalidades ou correções não impactaram o sistema existente.
+- **Testes Funcionais:** Para validar se cada funcionalidade se comporta conforme o esperado.
+- **Testes de UI/Layout:** Validações visuais para garantir que os componentes da interface são renderizados corretamente.
+- **Testes de Regressão:** A suíte de automação será utilizada para garantir que novas funcionalidades ou correções não impactaram o sistema existente.
 
 ### 4.3. Ferramentas
 
-- Automação: Cypress
-- Linguagem: JavaScript
-- Gerenciamento: Git/GitHub
+- **Automação:** Cypress
+- **Linguagem:** JavaScript
+- **Gerenciamento:** Git/GitHub
 
 ## 5. Ambiente de Teste
 
-- URL da Aplicação: https://www.saucedemo.com/v1/
-- Navegador: Chrome (executado via Cypress)
-- Dados de Teste (Usuários):
+- **URL da Aplicação:** https://www.saucedemo.com/v1/
+- **Navegador:** Chrome (executado via Cypress)
+- **Dados de Teste (Usuários):**
   - Padrão: standard_user
   - Bloqueado: locked_out_user
   - Senha (para todos): secret_sauce
