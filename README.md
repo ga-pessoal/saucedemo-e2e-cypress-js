@@ -99,7 +99,7 @@ npx cypress run --browser chrome
 npx cypress run --spec "cypress/e2e/nome-da-spec.cy.js"
 ```
 
-📝 Padrões e Abordagens
+## 📝 Padrões e Abordagens
 
 - Page Object Model (POM): A estrutura em `cypress/support/pages` abstrai a lógica de interação com as páginas, tornando os testes mais legíveis e fáceis de manter.
 - Component-Based Commands: Comandos customizados em `cypress/support/components` são criados para interagir com elementos de UI reutilizáveis. Isso não apenas reduz a duplicação de código, mas também centraliza as asserções de estilo e comportamento, como demonstrado no exemplo abaixo:
