@@ -3,8 +3,12 @@
     "username": "admin_user",
     "password": "admin_password"
   },
-  "validUser": {
+  "standardUser": {
     "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "lockedOutUser": {
+    "username": "locked_out_user",
     "password": "secret_sauce"
   },
   "invalidUser": {
