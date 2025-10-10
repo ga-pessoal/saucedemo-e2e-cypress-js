@@ -1,6 +1,7 @@
 # Cobertura de Teste - E-commerce Sauce Demo
 
-1. IntroduçãoEste documento resume a cobertura dos testes automatizados E2E desenvolvidos com Cypress para o site Sauce Demo, mapeando as funcionalidades e cenários testados aos seus respectivos arquivos de especificação.
+1. Introdução
+   Este documento resume a cobertura dos testes automatizados E2E desenvolvidos com Cypress para o site Sauce Demo, mapeando as funcionalidades e cenários testados aos seus respectivos arquivos de especificação.
 
 2. Tabela de Cobertura de TestesA tabela a seguir detalha a cobertura dos testes automatizados.
 
