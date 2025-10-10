@@ -1,9 +1,12 @@
 # Cobertura de Teste - E-commerce Sauce Demo
 
-1. Introdução
-   Este documento resume a cobertura dos testes automatizados E2E desenvolvidos com Cypress para o site Sauce Demo, mapeando as funcionalidades e cenários testados aos seus respectivos arquivos de especificação.
+## 1. Introdução
 
-2. Tabela de Cobertura de TestesA tabela a seguir detalha a cobertura dos testes automatizados.
+Este documento resume a cobertura dos testes automatizados E2E desenvolvidos com Cypress para o site Sauce Demo, mapeando as funcionalidades e cenários testados aos seus respectivos arquivos de especificação.
+
+## 2. Tabela de Cobertura de Testes
+
+A tabela a seguir detalha a cobertura dos testes automatizados.
 
 | Funcionalidade           | Cenário de Teste                                           | Status       | Arquivo de Teste (`cypress/e2e`) |
 | :----------------------- | :--------------------------------------------------------- | :----------- | :------------------------------- |
@@ -25,5 +28,6 @@
 | **Checkout**             | Finalização da compra com sucesso                          | Automatizado | `checkout.cy.js`                 |
 | **Checkout**             | Exibição de mensagem de erro para campos obrigatórios      | Automatizado | `checkout.cy.js`                 |
 
-3. Conclusão
-   A suíte de testes automatizados cobre os fluxos críticos da aplicação, como autenticação, catálogo, carrinho e checkout. Todos os cenários planejados foram implementados, o que garante uma base sólida para futuros testes de regressão.
+## 3. Conclusão
+
+A suíte de testes automatizados cobre os fluxos críticos da aplicação, como autenticação, catálogo, carrinho e checkout. Todos os cenários planejados foram implementados, o que garante uma base sólida para futuros testes de regressão.

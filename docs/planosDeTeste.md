@@ -37,7 +37,6 @@ As seguintes funcionalidades serão testadas:
   - Preenchimento das informações do comprador (Nome, Sobrenome, CEP).
   - Visualização do resumo do pedido (Checkout Overview).
   - Confirmação e finalização da compra.
-  - Visualização da mensagem de sucesso ("Thank you for your order!").
 
 ### 3.2. Funcionalidades Fora de Escopo
 
