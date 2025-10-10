@@ -2,20 +2,21 @@
 
 Este documento descreve os casos de teste manuais para as funcionalidades do site Sauce Demo. Para facilitar a cópia do texto, cada caso de teste está dentro de um bloco de código.
 
-1. Autenticação
-   CT-AUTH-001: Login com sucesso
-   | Atributo | Descrição |
-   | :--- | :--- |
-   | **ID** | CT-AUTH-001 |
-   | **TÍTULO** | Login com usuário padrão (standard_user) |
-   | **Descrição** | Verificar se o sistema permite o login com um usuário padrão válido. |
-   | **Precondição** | 1. O sistema deve estar acessível.<br>2. O usuário não deve estar logado. |
-   | **Passo-a-passo** | 1. Acessar a página `https://www.saucedemo.com/v1/`.<br>2. Preencher o campo `username` com "standard_user".<br>3. Preencher o campo `password` com "secret_sauce".<br>4. Clicar no botão "Login". |
-   | **Resultado esperado** | O usuário deve ser autenticado e redirecionado para a página de inventário (`/inventory.html`). |
-   | **Cenário de teste** | Login com credenciais válidas. |
-   | **Ambiente de teste** | Chrome + Windows 10 |
-   | **Resultado encontrado** | |
-   | **Status** | |
+## 1. Autenticação
+
+CT-AUTH-001: Login com sucesso
+| Atributo | Descrição |
+| :--- | :--- |
+| **ID** | CT-AUTH-001 |
+| **TÍTULO** | Login com usuário padrão (standard_user) |
+| **Descrição** | Verificar se o sistema permite o login com um usuário padrão válido. |
+| **Precondição** | 1. O sistema deve estar acessível.<br>2. O usuário não deve estar logado. |
+| **Passo-a-passo** | 1. Acessar a página `https://www.saucedemo.com/v1/`.<br>2. Preencher o campo `username` com "standard_user".<br>3. Preencher o campo `password` com "secret_sauce".<br>4. Clicar no botão "Login". |
+| **Resultado esperado** | O usuário deve ser autenticado e redirecionado para a página de inventário (`/inventory.html`). |
+| **Cenário de teste** | Login com credenciais válidas. |
+| **Ambiente de teste** | Chrome + Windows 10 |
+| **Resultado encontrado** | |
+| **Status** | |
 
 CT-AUTH-002: Login com usuário bloqueado
 | Atributo | Descrição |
@@ -59,20 +60,21 @@ CT-AUTH-004: Logout da aplicação
 | **Resultado encontrado** | |
 | **Status** | |
 
-2. Catálogo de Produtos (Inventário)
-   CT-INV-001: Visualização da lista de produtos
-   | Atributo | Descrição |
-   | :--- | :--- |
-   | **ID** | CT-INV-001 |
-   | **TÍTULO** | Visualização da lista de produtos |
-   | **Descrição** | Verificar se a lista de produtos é exibida corretamente após o login. |
-   | **Precondição** | 1. O usuário deve estar logado com sucesso. |
-   | **Passo-a-passo** | 1. Realizar o login com um usuário válido. |
-   | **Resultado esperado** | A página de inventário é carregada, exibindo uma lista com vários produtos, cada um com imagem, nome, descrição, preço e botão "Add to cart". |
-   | **Cenário de teste** | Visualizar produtos no catálogo. |
-   | **Ambiente de teste** | Chrome + Windows 10 |
-   | **Resultado encontrado** | |
-   | **Status** | |
+## 2. Catálogo de Produtos (Inventário)
+
+CT-INV-001: Visualização da lista de produtos
+| Atributo | Descrição |
+| :--- | :--- |
+| **ID** | CT-INV-001 |
+| **TÍTULO** | Visualização da lista de produtos |
+| **Descrição** | Verificar se a lista de produtos é exibida corretamente após o login. |
+| **Precondição** | 1. O usuário deve estar logado com sucesso. |
+| **Passo-a-passo** | 1. Realizar o login com um usuário válido. |
+| **Resultado esperado** | A página de inventário é carregada, exibindo uma lista com vários produtos, cada um com imagem, nome, descrição, preço e botão "Add to cart". |
+| **Cenário de teste** | Visualizar produtos no catálogo. |
+| **Ambiente de teste** | Chrome + Windows 10 |
+| **Resultado encontrado** | |
+| **Status** | |
 
 CT-INV-002: Ordenação dos produtos
 | Atributo | Descrição |
@@ -130,20 +132,21 @@ CT-INV-005: Acesso à página de detalhes de um produto
 | **Resultado encontrado** | |
 | **Status** | |
 
-3. Carrinho de Compras
-   CT-CART-001: Visualização dos produtos adicionados
-   | Atributo | Descrição |
-   | :--- | :--- |
-   | **ID** | CT-CART-001 |
-   | **TÍTULO** | Visualização dos produtos adicionados |
-   | **Descrição** | Verificar se os produtos adicionados são exibidos corretamente na página do carrinho. |
-   | **Precondição** | 1. Pelo menos um produto foi adicionado ao carrinho. |
-   | **Passo-a-passo** | 1. Clicar no ícone do carrinho de compras. |
-   | **Resultado esperado** | A página do carrinho (`/cart.html`) é exibida, listando os produtos que foram adicionados, com suas respectivas quantidades, nomes e preços. |
-   | **Cenário de teste** | Conferir itens no carrinho. |
-   | **Ambiente de teste** | Chrome + Windows 10 |
-   | **Resultado encontrado** | |
-   | **Status** | |
+## 3. Carrinho de Compras
+
+CT-CART-001: Visualização dos produtos adicionados
+| Atributo | Descrição |
+| :--- | :--- |
+| **ID** | CT-CART-001 |
+| **TÍTULO** | Visualização dos produtos adicionados |
+| **Descrição** | Verificar se os produtos adicionados são exibidos corretamente na página do carrinho. |
+| **Precondição** | 1. Pelo menos um produto foi adicionado ao carrinho. |
+| **Passo-a-passo** | 1. Clicar no ícone do carrinho de compras. |
+| **Resultado esperado** | A página do carrinho (`/cart.html`) é exibida, listando os produtos que foram adicionados, com suas respectivas quantidades, nomes e preços. |
+| **Cenário de teste** | Conferir itens no carrinho. |
+| **Ambiente de teste** | Chrome + Windows 10 |
+| **Resultado encontrado** | |
+| **Status** | |
 
 CT-CART-002: Remoção de produtos do carrinho
 | Atributo | Descrição |
@@ -187,20 +190,21 @@ CT-CART-004: Continuação da navegação (retorno para o inventário)
 | **Resultado encontrado** | |
 | **Status** | |
 
-4. Checkout
-   CT-CHECKOUT-001: Preenchimento das informações do comprador
-   | Atributo | Descrição |
-   | :--- | :--- |
-   | **ID** | CT-CHECKOUT-001 |
-   | **TÍTULO** | Preenchimento das informações do comprador |
-   | **Descrição** | Verificar se o usuário consegue preencher seus dados e avançar para o resumo do pedido. |
-   | **Precondição** | 1. O usuário deve estar na página de checkout (`/checkout-step-one.html`). |
-   | **Passo-a-passo** | 1. Preencher o campo "First Name".<br>2. Preencher o campo "Last Name".<br>3. Preencher o campo "Zip/Postal Code".<br>4. Clicar no botão "Continue". |
-   | **Resultado esperado** | O usuário é redirecionado para a página de resumo do pedido (`/checkout-step-two.html`). |
-   | **Cenário de teste** | Inserir dados de entrega. |
-   | **Ambiente de teste** | Chrome + Windows 10 |
-   | **Resultado encontrado** | |
-   | **Status** | |
+## 4. Checkout
+
+CT-CHECKOUT-001: Preenchimento das informações do comprador
+| Atributo | Descrição |
+| :--- | :--- |
+| **ID** | CT-CHECKOUT-001 |
+| **TÍTULO** | Preenchimento das informações do comprador |
+| **Descrição** | Verificar se o usuário consegue preencher seus dados e avançar para o resumo do pedido. |
+| **Precondição** | 1. O usuário deve estar na página de checkout (`/checkout-step-one.html`). |
+| **Passo-a-passo** | 1. Preencher o campo "First Name".<br>2. Preencher o campo "Last Name".<br>3. Preencher o campo "Zip/Postal Code".<br>4. Clicar no botão "Continue". |
+| **Resultado esperado** | O usuário é redirecionado para a página de resumo do pedido (`/checkout-step-two.html`). |
+| **Cenário de teste** | Inserir dados de entrega. |
+| **Ambiente de teste** | Chrome + Windows 10 |
+| **Resultado encontrado** | |
+| **Status** | |
 
 CT-CHECKOUT-002: Visualização do resumo do pedido
 | Atributo | Descrição |
