@@ -25,4 +25,5 @@
 | **Checkout**             | Finalização da compra com sucesso                          | Automatizado | `checkout.cy.js`                 |
 | **Checkout**             | Exibição de mensagem de erro para campos obrigatórios      | Automatizado | `checkout.cy.js`                 |
 
-3. ConclusãoA suíte de testes automatizados cobre os fluxos críticos da aplicação, como autenticação, catálogo, carrinho e checkout. Todos os cenários planejados foram implementados, o que garante uma base sólida para futuros testes de regressão.
+3. Conclusão
+   A suíte de testes automatizados cobre os fluxos críticos da aplicação, como autenticação, catálogo, carrinho e checkout. Todos os cenários planejados foram implementados, o que garante uma base sólida para futuros testes de regressão.
