@@ -1,15 +1,22 @@
+// Importação de Pages
+import loginPage from "../support/pages/loginPage";
+import inventarioPage from "../support/pages/inventarioPage";
+
+// Importação de dados
+import userData from "../fixtures/userData.json";
+import listaDeProdutos from "../fixtures/listaDeProdutos.json";
+
 describe('Testes do Catálogo de Produtos (Inventário)', () => {
   beforeEach(() => {
     // Faz login antes de cada teste deste grupo
-    cy.visit('https://www.saucedemo.com/v1/');
-    cy.get('[data-test="username"]').type('standard_user');
-    cy.get('[data-test="password"]').type('secret_sauce');
-    cy.get('[data-test="login-button"]').click();
+    cy.visit('/');
+
+    loginPage.fillLogin(userData.standardUser.username, userData.standardUser.password);
+    loginPage.submit();
   });
 
-  it('CT-INV-001: Deve exibir a lista de produtos', () => {
-    cy.get('.inventory_list .inventory_item').should('have.length.greaterThan', 0);
-    cy.get('.inventory_item_name').first().should('be.visible');
+  it.only('CT-INV-001: Deve exibir a lista de produtos', () => {
+    inventarioPage.listaDeProdutosVisiveis(listaDeProdutos.listagemInicial);
   });
 
   it('CT-INV-002: Deve ordenar os produtos corretamente', () => {
