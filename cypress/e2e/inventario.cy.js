@@ -45,7 +45,7 @@ describe('Testes do Catálogo de Produtos (Inventário)', () => {
     inventarioPage.removerProdutoDoCarrinho('Sauce Labs Backpack');
   });
 
-  it.only('CT-INV-005: Deve acessar a página de detalhes de um produto', () => {
+  it('CT-INV-005: Deve acessar a página de detalhes de um produto', () => {
     // Escolhe um produto da lista
     const produto = listaDeProdutos.listagemInicial[0];
 

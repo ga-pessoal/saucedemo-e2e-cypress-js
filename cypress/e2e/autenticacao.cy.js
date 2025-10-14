@@ -7,33 +7,35 @@ describe('Testes de Autenticação', () => {
   });
 
   it('CT-AUTH-001: Deve fazer login com sucesso com o usuário padrão', () => {
-    loginPage.fillLogin(userData.standardUser.username, userData.standardUser.password);
-    loginPage.submit();
+    // Fazer login
+    loginPage.login(userData.standardUser.username, userData.standardUser.password);
+
+    // Verificar se o login foi bem-sucedido
     cy.url().should('include', '/inventory.html');
   });
 
   it('CT-AUTH-002: Deve exibir mensagem de erro para usuário bloqueado', () => {
-    loginPage.fillLogin(userData.lockedOutUser.username, userData.lockedOutUser.password);
-    loginPage.submit();
-    cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Sorry, this user has been locked out.');
+    // Fazer login com usuário bloqueado
+    loginPage.login(userData.lockedOutUser.username, userData.lockedOutUser.password);
+
+    // Verificar a mensagem de erro
+    loginPage.retornaMensagemDeErro().should('have.text', 'Epic sadface: Sorry, this user has been locked out.');
   });
 
   it('CT-AUTH-003: Deve exibir mensagem de erro para credenciais inválidas', () => {
-    loginPage.fillLogin(userData.invalidUser.username, userData.invalidUser.password);
-    loginPage.submit();
-    cy.get('[data-test="error"]').should('have.text', 'Epic sadface: Username and password do not match any user in this service');
+    // Fazer login com credenciais inválidas
+    loginPage.login(userData.invalidUser.username, userData.invalidUser.password);
+
+    // Verificar a mensagem de erro
+    loginPage.retornaMensagemDeErro().should('have.text', 'Epic sadface: Username and password do not match any user in this service');
   });
 
   it('CT-AUTH-004: Deve fazer logout da aplicação com sucesso', () => {
     // Primeiro, faz o login
-    loginPage.fillLogin(userData.standardUser.username, userData.standardUser.password);
-    loginPage.submit();
+    loginPage.login(userData.standardUser.username, userData.standardUser.password);
 
     // Agora, faz o logout
-    cy.get('.bm-burger-button > button').click();
-    cy.get('#logout_sidebar_link').click();
-    cy.url().should('include', '/index.html');
-    cy.get('input[type="submit"]').should('be.visible');
+    loginPage.logout();
   });
 });
 
