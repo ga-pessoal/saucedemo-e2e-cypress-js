@@ -1,18 +1,26 @@
 class InventarioPage {
   elements = {
+    selectFiltro: () => cy.get('.product_sort_container'),
+    badgeCarrinho: () => cy.get('.shopping_cart_badge'),
+    botaoSecundario: '.btn_secondary',
+    botaoPrimario: '.btn_primary',
     listaDeProdutos: '.inventory_list',
     item: '.inventory_item',
-    itemProduto: '.inventory_item',
     itemNome: '.inventory_item_name',
     itemDescricao: '.inventory_item_desc',
     itemPreco: '.inventory_item_price',
-    itemImagem: '.inventory_item_img img',
+    itemImagem: '.inventory_item_img img'
   };
 
-  listaDeProdutosVisiveis(produtos) {
+  selecionaFiltro(filtro) {
+    this.elements.selectFiltro().select(filtro);
+    this.elements.selectFiltro().should('have.value', filtro);
+  };
+
+  listaDeProdutosVisivel(produtos) {
     cy.get(`${this.elements.listaDeProdutos} ${this.elements.item}`).should('have.length.greaterThan', 0);
 
-    cy.get('.inventory_item').should('have.length', produtos.length)
+    cy.get(this.elements.item).should('have.length', produtos.length)
       .each(($el, index) => {
         const produto = produtos[index];
 
@@ -38,6 +46,39 @@ class InventarioPage {
       });
   };
 
+  adicionaProdutoAoCarrinho(nomeDoProduto) {
+    cy.contains(this.elements.item, nomeDoProduto)
+      .find('button')
+      .click();
+
+    this.elements.badgeCarrinho().should('have.text', '1');
+
+    cy.contains(this.elements.item, nomeDoProduto)
+      .find(this.elements.botaoSecundario)
+      .should('be.visible')
+      .and('have.text', 'REMOVE');
+  };
+
+  removerProdutoDoCarrinho(nomeDoProduto) {
+    cy.contains(this.elements.item, nomeDoProduto)
+      .find(this.elements.botaoSecundario)
+      .click();
+
+    this.elements.badgeCarrinho().should('not.exist');
+
+    cy.contains(this.elements.item, nomeDoProduto)
+      .find(this.elements.botaoPrimario)
+      .should('be.visible')
+      .and('have.text', 'ADD TO CART');
+  };
+
+  acessarDetalhesDoProduto(produto) {
+    cy.contains(this.elements.item, produto.name)
+      .find(this.elements.itemNome)
+      .click();
+
+    cy.url().should('include', `/inventory-item.html?id=${produto.id}`);
+  };
 };
 
 export default new InventarioPage();

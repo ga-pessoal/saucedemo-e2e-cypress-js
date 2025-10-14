@@ -5,6 +5,7 @@ import inventarioPage from "../support/pages/inventarioPage";
 // Importação de dados
 import userData from "../fixtures/userData.json";
 import listaDeProdutos from "../fixtures/listaDeProdutos.json";
+import DetalheProdutoPage from "../support/pages/DetalheProdutoPage";
 
 describe('Testes do Catálogo de Produtos (Inventário)', () => {
   beforeEach(() => {
@@ -15,42 +16,47 @@ describe('Testes do Catálogo de Produtos (Inventário)', () => {
     loginPage.submit();
   });
 
-  it.only('CT-INV-001: Deve exibir a lista de produtos', () => {
-    inventarioPage.listaDeProdutosVisiveis(listaDeProdutos.listagemInicial);
+  it('CT-INV-001: Deve exibir a lista de produtos', () => {
+    inventarioPage.listaDeProdutosVisivel(listaDeProdutos.listagemInicial);
   });
 
   it('CT-INV-002: Deve ordenar os produtos corretamente', () => {
     // Ordena A-Z (padrão) e verifica o primeiro item
-    cy.get('.inventory_item_name').first().should('have.text', 'Sauce Labs Backpack');
+    inventarioPage.listaDeProdutosVisivel(listaDeProdutos.listagemInicial);
 
     // Ordena Z-A
-    cy.get('[data-test="product_sort_container"]').select('za');
-    cy.get('.inventory_item_name').first().should('have.text', 'Test.allTheThings() T-Shirt (Red)');
+    inventarioPage.selecionaFiltro('za');
+    inventarioPage.listaDeProdutosVisivel(listaDeProdutos.listagemZaA);
 
     // Ordena por Preço (Baixo-Alto)
-    cy.get('[data-test="product_sort_container"]').select('lohi');
-    cy.get('.inventory_item_price').first().should('have.text', '$7.99');
+    inventarioPage.selecionaFiltro('lohi');
+    inventarioPage.listaDeProdutosVisivel(listaDeProdutos.listagemPrecoBaixoAlto);
 
     // Ordena por Preço (Alto-Baixo)
-    cy.get('[data-test="product_sort_container"]').select('hilo');
-    cy.get('.inventory_item_price').first().should('have.text', '$49.99');
+    inventarioPage.selecionaFiltro('hilo');
+    inventarioPage.listaDeProdutosVisivel(listaDeProdutos.listagemPrecoAltoBaixo);
   });
 
   it('CT-INV-003 & CT-INV-004: Deve adicionar e remover produtos do carrinho', () => {
     // Adiciona ao carrinho
-    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-    cy.get('.shopping_cart_badge').should('have.text', '1');
-    cy.get('[data-test="remove-sauce-labs-backpack"]').should('be.visible');
+    inventarioPage.adicionaProdutoAoCarrinho('Sauce Labs Backpack');
 
     // Remove do carrinho
-    cy.get('[data-test="remove-sauce-labs-backpack"]').click();
-    cy.get('.shopping_cart_badge').should('not.exist');
-    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').should('be.visible');
+    inventarioPage.removerProdutoDoCarrinho('Sauce Labs Backpack');
   });
 
-  it('CT-INV-005: Deve acessar a página de detalhes de um produto', () => {
-    cy.get('#item_4_title_link > .inventory_item_name').click(); // Clica no nome do "Sauce Labs Backpack"
-    cy.url().should('include', '/inventory-item.html?id=4');
-    cy.get('.inventory_details_name').should('have.text', 'Sauce Labs Backpack');
+  it.only('CT-INV-005: Deve acessar a página de detalhes de um produto', () => {
+    // Escolhe um produto da lista
+    const produto = listaDeProdutos.listagemInicial[0];
+
+    // Acessa o detalhe do produto
+    inventarioPage.acessarDetalhesDoProduto(produto);
+
+    // Valida os dados de detalhe do produto
+    DetalheProdutoPage.validaDetalhesDoProduto(produto);
   });
+
+  // TODO: Criar CT-INV-006: Validar que o carrinho mantém os itens ao navegar para a página de detalhes do produto
+  // TODO: Criar CT-INV-007: Adicionar e remover produtos pela página de detalhes do produto
+  // TODO: Criar CT-INV-008: Adicionar multiplos produtos ao carrinho e validar o contador
 });
