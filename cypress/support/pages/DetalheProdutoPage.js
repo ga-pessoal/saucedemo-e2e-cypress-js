@@ -1,5 +1,5 @@
 class DetalheProdutoPage {
-  // Seletores dos elementos da página de login
+  // Seletores dos elementos da página de Detalhe do Produto
   elements = {
     itemNome: () => cy.get('.inventory_details_name'),
     itemDescricao: () => cy.get('.inventory_details_desc'),
@@ -7,8 +7,11 @@ class DetalheProdutoPage {
     itemImagem: () => cy.get('.inventory_details_img'),
   }
 
-  // Métodos para interagir com a página de login
+  // Métodos para interagir com a página de Detalhe do Produto
   validaDetalhesDoProduto(produto) {
+    // Verifica as informações do produto na página de detalhes
+    cy.url().should('include', `/inventory-item.html?id=${produto.id}`);
+
     this.elements.itemNome()
       .should('have.text', produto.name);
 
@@ -21,6 +24,7 @@ class DetalheProdutoPage {
     this.elements.itemImagem()
       .should('have.attr', 'src', produto.img_src);
 
+    // Verifica se o botão "Add to cart" está visível
     cy.validaBotaoPrimario();
   }
 

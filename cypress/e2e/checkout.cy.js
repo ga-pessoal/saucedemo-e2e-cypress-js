@@ -1,44 +1,60 @@
+// Importação de Pages
+import loginPage from "../support/pages/loginPage";
+import carrinhoPage from "../support/pages/carrinhoPage";
+import inventarioPage from "../support/pages/inventarioPage";
+
+
+// Importação de dados
+import userData from "../fixtures/userData.json";
+import listaDeProdutos from "../fixtures/listaDeProdutos.json";
+import informacoesDeCompra from "../fixtures/informacoesDeCompra.json";
+import { checkoutPage } from "../support/pages/checkoutPage";
+
+// Escolhe um produto da lista
+const produto = listaDeProdutos.listagemInicial[0];
+
 describe('Testes do Processo de Checkout', () => {
   beforeEach(() => {
     // Login, adiciona item e navega para o checkout antes de cada teste
-    cy.visit('https://www.saucedemo.com/v1/');
-    cy.get('[data-test="username"]').type('standard_user');
-    cy.get('[data-test="password"]').type('secret_sauce');
-    cy.get('[data-test="login-button"]').click();
-    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
-    cy.get('.shopping_cart_link').click();
-    cy.get('[data-test="checkout"]').click();
+    cy.visit('/');
+    loginPage.login(userData.standardUser.username, userData.standardUser.password);
+    inventarioPage.adicionaProdutoAoCarrinho(produto.name);
+
+    // Navega para o carrinho
+    carrinhoPage.navegarParaCarrinho();
+
+    // Navega para o checkout
+    carrinhoPage.navegarParaCheckout();
   });
 
   it('CT-CHECKOUT-001: Deve preencher as informações do comprador e continuar', () => {
-    cy.get('[data-test="firstName"]').type('João');
-    cy.get('[data-test="lastName"]').type('Silva');
-    cy.get('[data-test="postalCode"]').type('12345-678');
-    cy.get('[data-test="continue"]').click();
-    cy.url().should('include', '/checkout-step-two.html');
+    // Preenche as informações do comprador e continua
+    checkoutPage.preencherInformacoesDoComprador(informacoesDeCompra.comprador);
   });
 
   it('CT-CHECKOUT-002 & CT-CHECKOUT-003: Deve visualizar o resumo e finalizar a compra', () => {
-    // Preenche as informações primeiro
-    cy.get('[data-test="firstName"]').type('Maria');
-    cy.get('[data-test="lastName"]').type('Souza');
-    cy.get('[data-test="postalCode"]').type('98765-432');
-    cy.get('[data-test="continue"]').click();
+    // Preenche as informações do comprador e continua
+    checkoutPage.preencherInformacoesDoComprador(informacoesDeCompra.comprador);
+
+    // Clica em continuar e verifica a URL
+    checkoutPage.clicarContinuar();
 
     // CT-CHECKOUT-002: Visualiza o resumo
-    cy.get('.summary_info').should('be.visible');
-    cy.get('.cart_item').should('have.length', 1);
-    cy.get('.summary_total_label').should('contain.text', 'Total:');
+    checkoutPage.visualizarResumo(informacoesDeCompra);
 
     // CT-CHECKOUT-003: Finaliza a compra e verifica mensagem de sucesso
-    cy.get('[data-test="finish"]').click();
-    cy.url().should('include', '/checkout-complete.html');
-    cy.get('.complete-header').should('have.text', 'THANK YOU FOR YOUR ORDER');
+    checkoutPage.finalizarCompra();
   });
 
   it('Deve exibir erro ao tentar continuar sem preencher as informações', () => {
-    cy.get('[data-test="continue"]').click();
-    cy.get('[data-test="error"]').should('be.visible').and('contain.text', 'Error: First Name is required');
+    // Clica em continuar sem preencher os campos
+    checkoutPage.elements.botaoContinuar().click();
+
+    // Verifica se a mensagem de erro é exibida
+    checkoutPage.retornarMensagemErro()
+      .should('be.visible')
+      .and('contain.text', 'Error: First Name is required');
+
   });
 });
 

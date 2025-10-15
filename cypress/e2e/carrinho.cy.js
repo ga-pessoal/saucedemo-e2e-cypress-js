@@ -12,11 +12,9 @@ const produto = listaDeProdutos.listagemInicial[0];
 
 describe('Testes do Carrinho de Compras', () => {
   beforeEach(() => {
-    // Login e adiciona um item ao carrinho antes de cada teste
+    // Login, adiciona um item ao carrinho e navega para o carrinho antes de cada teste
     cy.visit('/');
     loginPage.login(userData.standardUser.username, userData.standardUser.password);
-
-    // Adiciona ao carrinho
     inventarioPage.adicionaProdutoAoCarrinho(produto.name);
 
     // Navega para o carrinho
