@@ -1,4 +1,5 @@
 class InventarioPage {
+  // Seletores dos elementos da página de login
   elements = {
     selectFiltro: () => cy.get('.product_sort_container'),
     badgeCarrinho: () => cy.get('.shopping_cart_badge'),
@@ -12,6 +13,7 @@ class InventarioPage {
     itemImagem: '.inventory_item_img img'
   };
 
+  // Métodos para interagir com a página de login
   selecionaFiltro(filtro) {
     this.elements.selectFiltro().select(filtro);
     this.elements.selectFiltro().should('have.value', filtro);

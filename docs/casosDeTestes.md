@@ -146,7 +146,7 @@ CT-CART-001: Visualização dos produtos adicionados
 | **Cenário de teste** | Conferir itens no carrinho. |
 | **Ambiente de teste** | Chrome + Windows 10 |
 | **Resultado encontrado** | |
-| **Status** | |
+| **Status** | FALHA - O preço está aparecendo sem cifrão|
 
 CT-CART-002: Remoção de produtos do carrinho
 | Atributo | Descrição |

@@ -1,40 +1,46 @@
+// Importação de Pages
 import loginPage from "../support/pages/loginPage";
+import inventarioPage from "../support/pages/inventarioPage";
+import carrinhoPage from "../support/pages/carrinhoPage";
+
+// Importação de dados
 import userData from "../fixtures/userData.json";
+import listaDeProdutos from "../fixtures/listaDeProdutos.json";
+
+// Escolhe um produto da lista
+const produto = listaDeProdutos.listagemInicial[0];
 
 describe('Testes do Carrinho de Compras', () => {
   beforeEach(() => {
     // Login e adiciona um item ao carrinho antes de cada teste
     cy.visit('/');
+    loginPage.login(userData.standardUser.username, userData.standardUser.password);
 
-    loginPage.fillLogin(userData.standardUser.username, userData.standardUser.password);
-    loginPage.submit();
+    // Adiciona ao carrinho
+    inventarioPage.adicionaProdutoAoCarrinho(produto.name);
 
-    cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click();
+    // Navega para o carrinho
+    carrinhoPage.navegarParaCarrinho();
   });
 
-  it.only('CT-CART-001: Deve exibir os produtos adicionados no carrinho', () => {
-    cy.get('.shopping_cart_link').click();
-    cy.url().should('include', '/cart.html');
-    cy.get('.cart_item').should('have.length', 1);
-    cy.get('.inventory_item_name').should('have.text', 'Sauce Labs Backpack');
+  it('CT-CART-001: Deve exibir os produtos adicionados no carrinho', () => {
+    // Valida que o produto está no carrinho
+    carrinhoPage.validaProdutoNoCarrinho(produto);
   });
 
   it('CT-CART-002: Deve remover produtos do carrinho', () => {
-    cy.get('.shopping_cart_link').click();
-    cy.get('[data-test="remove-sauce-labs-backpack"]').click();
-    cy.get('.cart_item').should('not.exist');
+    // Remove o produto do carrinho
+    carrinhoPage.removerProdutoDoCarrinho(produto.name);
   });
 
   it('CT-CART-003: Deve navegar para o checkout', () => {
-    cy.get('.shopping_cart_link').click();
-    cy.get('[data-test="checkout"]').click();
-    cy.url().should('include', '/checkout-step-one.html');
+    // Navega para o checkout
+    carrinhoPage.navegarParaCheckout();
   });
 
   it('CT-CART-004: Deve continuar navegando e retornar ao inventário', () => {
-    cy.get('.shopping_cart_link').click();
-    cy.get('[data-test="continue-shopping"]').click();
-    cy.url().should('include', '/inventory.html');
+    // Clica em "Continue Shopping"
+    carrinhoPage.navegarParaInventario();
   });
 });
 

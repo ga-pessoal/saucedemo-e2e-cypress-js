@@ -1,4 +1,5 @@
 class DetalheProdutoPage {
+  // Seletores dos elementos da página de login
   elements = {
     itemNome: () => cy.get('.inventory_details_name'),
     itemDescricao: () => cy.get('.inventory_details_desc'),
@@ -6,6 +7,7 @@ class DetalheProdutoPage {
     itemImagem: () => cy.get('.inventory_details_img'),
   }
 
+  // Métodos para interagir com a página de login
   validaDetalhesDoProduto(produto) {
     this.elements.itemNome()
       .should('have.text', produto.name);

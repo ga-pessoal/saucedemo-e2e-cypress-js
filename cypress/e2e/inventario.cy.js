@@ -5,15 +5,14 @@ import inventarioPage from "../support/pages/inventarioPage";
 // Importação de dados
 import userData from "../fixtures/userData.json";
 import listaDeProdutos from "../fixtures/listaDeProdutos.json";
-import DetalheProdutoPage from "../support/pages/DetalheProdutoPage";
+import detalheProdutoPage from "../support/pages/detalheProdutoPage";
 
 describe('Testes do Catálogo de Produtos (Inventário)', () => {
   beforeEach(() => {
     // Faz login antes de cada teste deste grupo
     cy.visit('/');
 
-    loginPage.fillLogin(userData.standardUser.username, userData.standardUser.password);
-    loginPage.submit();
+    loginPage.login(userData.standardUser.username, userData.standardUser.password);
   });
 
   it('CT-INV-001: Deve exibir a lista de produtos', () => {
@@ -53,7 +52,7 @@ describe('Testes do Catálogo de Produtos (Inventário)', () => {
     inventarioPage.acessarDetalhesDoProduto(produto);
 
     // Valida os dados de detalhe do produto
-    DetalheProdutoPage.validaDetalhesDoProduto(produto);
+    detalheProdutoPage.validaDetalhesDoProduto(produto);
   });
 
   // TODO: Criar CT-INV-006: Validar que o carrinho mantém os itens ao navegar para a página de detalhes do produto
