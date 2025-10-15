@@ -2,13 +2,14 @@
 import loginPage from "../support/pages/loginPage";
 import carrinhoPage from "../support/pages/carrinhoPage";
 import inventarioPage from "../support/pages/inventarioPage";
+import { checkoutPage } from "../support/pages/checkoutPage";
 
 
 // Importação de dados
 import userData from "../fixtures/userData.json";
 import listaDeProdutos from "../fixtures/listaDeProdutos.json";
 import informacoesDeCompra from "../fixtures/informacoesDeCompra.json";
-import { checkoutPage } from "../support/pages/checkoutPage";
+
 
 // Escolhe um produto da lista
 const produto = listaDeProdutos.listagemInicial[0];
