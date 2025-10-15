@@ -9,6 +9,7 @@ O projeto visa testar as funcionalidades do e-commerce [Saucedemo](https://www.s
 - [Cypress](https://www.cypress.io/): Framework principal para a escrita e execução dos testes E2E.
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript): Linguagem de programação utilizada para desenvolver os scripts de teste.
 - [Node.js](https://nodejs.org/pt): Ambiente de execução do JavaScript.
+- [Mochawesome Reporter](https://github.com/LironEr/cypress-mochawesome-reporter): Biblioteca para a geração de relatórios HTML detalhados e interativos.
 - [npm](https://www.npmjs.com/): Gerenciador de pacotes do Node.js para instalar as dependências do projeto.
 
 ## 📁 Estrutura de Pastas
@@ -20,6 +21,8 @@ O projeto está organizado da seguinte forma para garantir a separação de resp
 ├── cypress/
 │   ├── e2e/
 │   │   └── specs.cy.js              # Arquivos de especificação de testes (specs)
+│   ├── fixtures/          # Arquivos de massa de dados (ex: JSON com lista de produtos).
+│   ├── reports/           # Pasta onde os relatórios HTML são gerados (criada após a execução).
 │   ├── support/
 │   │   ├── components/
 │   │   │   └── exemplo_component.js # Comandos customizados para componentes reutilizáveis
@@ -122,3 +125,10 @@ Toda a documentação relacionada ao planejamento e execução dos testes está 
 - [Plano de Teste](./docs/planosDeTeste.md): Estratégia, escopo e abordagem dos testes.
 - [Cobertura de Teste](./docs/coberturaDeTeste.md): Mapeamento das funcionalidades cobertas pelos testes.
 - [Sugestões de Melhoria](./docs/sugestoesDeMelhoria.md): Recomendações identificadas durante os testes.
+
+## 📊 Relatórios de Teste (Reports)
+
+Este projeto utiliza o `cypress-mochawesome-reporter` para gerar relatórios visuais em HTML após a execução dos testes.
+
+- Geração: O relatório é gerado automaticamente toda vez que os testes são executados com o comando `npx cypress run`.
+- Localização: Após a execução, o relatório (`index.html`) pode ser encontrado na pasta `cypress/reports/`. Basta abrir este arquivo em qualquer navegador para visualizar os resultados detalhados, incluindo screenshots de falhas.
