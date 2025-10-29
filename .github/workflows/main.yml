@@ -1,0 +1,82 @@
+# Nome do Workflow
+name: CI - Pipeline de Testes Cypress
+
+# Define os gatilhos (triggers) que disparam o workflow
+on:
+  # Dispara no push para a branch 'main'
+  push:
+    branches: [main]
+  # Dispara em pull requests direcionados à branch 'main'
+  pull_request:
+    branches: [main]
+
+  # Permite que você rode este workflow manualmente pela aba "Actions" do GitHub
+  workflow_dispatch:
+
+# Define os jobs que serão executados
+jobs:
+  # Define um job chamado 'cypress-run'
+  cypress-run:
+    # O tipo de máquina virtual que o job rodará
+    runs-on: ubuntu-latest
+
+    # Define os passos do job
+    steps:
+      # 1. Faz o checkout do código do repositório
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Configura o Node.js para instalar o npm
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # Recomendado usar uma versão LTS
+
+      # 3. Cache das dependências npm para acelerar as execuções futuras
+      - name: Cache npm dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm # Local onde o npm armazena o cache
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 4. Instala as dependências do projeto (usa 'ci' que é mais rápido e seguro que 'install' para CI)
+      - name: Install dependencies
+        run: npm ci
+
+      # 5. Roda os testes do Cypress (modo 'run', sem interface gráfica)
+      # continue-on-error: true garante que os passos de upload de artefatos rodem mesmo se os testes falharem
+      - name: Run Cypress tests
+        run: npx cypress run
+        continue-on-error: true
+
+      # 6. Upload dos relatórios HTML do Mochawesome
+      # Sempre executa (if: always()) para que possamos ver o relatório mesmo se os testes falharem
+      - name: Upload Mochawesome reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mochawesome-reports
+          path: cypress/reports # Caminho da pasta dos relatórios
+          retention-days: 7 # Guarda os artefatos por 7 dias
+
+      # 7. Upload dos vídeos de execução do Cypress
+      # Sempre executa para análise
+      - name: Upload Cypress videos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          retention-days: 7
+
+      # 8. Upload das screenshots
+      # Só executa se um passo anterior falhou (if: failure()), pois o Cypress só tira screenshots em falhas
+      - name: Upload Cypress screenshots on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          retention-days: 7
