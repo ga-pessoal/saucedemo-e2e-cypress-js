@@ -77,4 +77,4 @@ class CheckoutPage {
   }
 };
 
-export const checkoutPage = new CheckoutPage();
+export default new CheckoutPage();

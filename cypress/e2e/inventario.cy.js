@@ -1,11 +1,11 @@
 // Importação de Pages
 import loginPage from "../support/pages/loginPage";
 import inventarioPage from "../support/pages/inventarioPage";
+import detalheProdutoPage from "../support/pages/detalheProdutoPage.js";
 
 // Importação de dados
 import userData from "../fixtures/userData.json";
 import listaDeProdutos from "../fixtures/listaDeProdutos.json";
-import detalheProdutoPage from "../support/pages/detalheProdutoPage";
 
 describe('Testes do Catálogo de Produtos (Inventário)', () => {
   beforeEach(() => {
