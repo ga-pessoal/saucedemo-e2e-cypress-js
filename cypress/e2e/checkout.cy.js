@@ -2,7 +2,7 @@
 import loginPage from "../support/pages/loginPage";
 import carrinhoPage from "../support/pages/carrinhoPage";
 import inventarioPage from "../support/pages/inventarioPage";
-import { checkoutPage } from "../support/pages/checkoutPage";
+import checkoutPage from "../support/pages/checkoutPage";
 
 
 // Importação de dados
