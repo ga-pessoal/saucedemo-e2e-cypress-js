@@ -8,6 +8,7 @@ O projeto visa testar as funcionalidades do e-commerce [Saucedemo](https://www.s
 
 - [Cypress](https://www.cypress.io/): Framework principal para a escrita e execução dos testes E2E.
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript): Linguagem de programação utilizada para desenvolver os scripts de teste.
+- [Faker.js](https://fakerjs.dev/): Biblioteca para geração de dados de teste dinâmicos (massa de dados).
 - [Mochawesome Reporter](https://github.com/LironEr/cypress-mochawesome-reporter): Biblioteca para a geração de relatórios HTML detalhados e interativos.
 - [Node.js](https://nodejs.org/pt): Ambiente de execução do JavaScript.
 - [npm](https://www.npmjs.com/): Gerenciador de pacotes do Node.js para instalar as dependências do projeto.

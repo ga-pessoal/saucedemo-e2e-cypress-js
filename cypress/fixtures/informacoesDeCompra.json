@@ -1,14 +1,7 @@
 {
-  "comprador": {
-    "primeiroNome": "João",
-    "sobrenome": "Silva",
-    "CEP": "12345-678"
-  },
-  "dadosDeCompra": {
-    "produto": "Sauce Labs Backpack",
-    "preco": "$29.99",
-    "itemTotal": "$29.99",
-    "taxa": "$2.40",
-    "total": "$32.39"
-  }
+  "produto": "Sauce Labs Backpack",
+  "preco": "$29.99",
+  "itemTotal": "$29.99",
+  "taxa": "$2.40",
+  "total": "$32.39"
 }

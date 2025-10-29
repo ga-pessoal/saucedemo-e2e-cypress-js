@@ -19,11 +19,13 @@ class CheckoutPage {
   };
 
   // Métodos para interagir com a página de Checkout
-  preencherInformacoesDoComprador(comprador) {
-    // Preenche os campos do formulário
-    this.elements.inputPrimeiroNome().type(comprador.primeiroNome);
-    this.elements.inputSobrenome().type(comprador.sobrenome);
-    this.elements.inputCEP().type(comprador.CEP);
+  preencherInformacoesDoComprador() {
+    // Preenche os campos do formulário com dados dinâmicos
+    cy.generateCheckoutData().then((comprador) => {
+      this.elements.inputPrimeiroNome().type(comprador.firstName);
+      this.elements.inputSobrenome().type(comprador.lastName);
+      this.elements.inputCEP().type(comprador.postalCode);
+    });
   }
 
   clicarContinuar() {
@@ -40,24 +42,24 @@ class CheckoutPage {
 
     this.elements.itemNome()
       .should('be.visible')
-      .and('contain.text', informacoesDeCompra.dadosDeCompra.produto);
+      .and('contain.text', informacoesDeCompra.produto);
 
     this.elements.itemPreco()
       .should('be.visible')
-      .and('contain.text', informacoesDeCompra.dadosDeCompra.preco);
+      .and('contain.text', informacoesDeCompra.preco);
 
     // Verifica o total do resumo
     this.elements.containerSumario().should('be.visible');
 
     this.elements.sumarioItemTotal()
       .should('be.visible')
-      .and('contain.text', `Item total: ${informacoesDeCompra.dadosDeCompra.preco}`);
+      .and('contain.text', `Item total: ${informacoesDeCompra.preco}`);
     this.elements.sumarioItemTaxa()
       .should('be.visible')
-      .and('contain.text', `Tax: ${informacoesDeCompra.dadosDeCompra.taxa}`);
+      .and('contain.text', `Tax: ${informacoesDeCompra.taxa}`);
     this.elements.sumarioTotal()
       .should('be.visible')
-      .and('contain.text', `Total: ${informacoesDeCompra.dadosDeCompra.total}`);
+      .and('contain.text', `Total: ${informacoesDeCompra.total}`);
   }
 
   finalizarCompra() {

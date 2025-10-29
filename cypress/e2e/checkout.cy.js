@@ -26,16 +26,17 @@ describe('Testes do Processo de Checkout', () => {
 
     // Navega para o checkout
     carrinhoPage.navegarParaCheckout();
+
   });
 
   it('CT-CHECKOUT-001: Deve preencher as informações do comprador e continuar', () => {
     // Preenche as informações do comprador e continua
-    checkoutPage.preencherInformacoesDoComprador(informacoesDeCompra.comprador);
+    checkoutPage.preencherInformacoesDoComprador();
   });
 
   it('CT-CHECKOUT-002 & CT-CHECKOUT-003: Deve visualizar o resumo e finalizar a compra', () => {
     // Preenche as informações do comprador e continua
-    checkoutPage.preencherInformacoesDoComprador(informacoesDeCompra.comprador);
+    checkoutPage.preencherInformacoesDoComprador();
 
     // Clica em continuar e verifica a URL
     checkoutPage.clicarContinuar();

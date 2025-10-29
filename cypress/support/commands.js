@@ -24,7 +24,21 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-
 // Components
 import './components/inputs.js'
 import './components/buttons.js'
+
+import { faker } from '@faker-js/faker/locale/pt_BR';
+
+/**
+ * @memberof cy
+ * @method generateCheckoutData
+ * @description Gera dados dinâmicos do comprador (Nome, Sobrenome, CEP)
+ * @returns {Object} Retorna um objeto { firstName, lastName, postalCode }
+ */
+Cypress.Commands.add('generateCheckoutData', () => {
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+  const postalCode = faker.location.zipCode('#####-###');
+  cy.wrap({ firstName, lastName, postalCode });
+});
