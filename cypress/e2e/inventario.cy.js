@@ -1,7 +1,7 @@
 // Importação de Pages
 import loginPage from "../support/pages/loginPage";
 import inventarioPage from "../support/pages/inventarioPage";
-// import detalheProdutoPage from "../support/pages/detalheProdutoPage";
+import produtoPage from "../support/pages/produtoPage";
 
 // Importação de dados
 import userData from "../fixtures/userData.json";
@@ -52,7 +52,7 @@ describe('Testes do Catálogo de Produtos (Inventário)', () => {
     inventarioPage.acessarDetalhesDoProduto(produto);
 
     // Valida os dados de detalhe do produto
-    // detalheProdutoPage.validaDetalhesDoProduto(produto);
+    produtoPage.validaDetalhesDoProduto(produto);
   });
 
   // TODO: Criar CT-INV-006: Validar que o carrinho mantém os itens ao navegar para a página de detalhes do produto

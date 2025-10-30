@@ -1,4 +1,4 @@
-class DetalheProdutoPage {
+class ProdutoPage {
   // Seletores dos elementos da página de Detalhe do Produto
   elements = {
     itemNome: () => cy.get('.inventory_details_name'),
@@ -30,4 +30,4 @@ class DetalheProdutoPage {
 
 }
 
-export default new DetalheProdutoPage();
+export default new ProdutoPage();
