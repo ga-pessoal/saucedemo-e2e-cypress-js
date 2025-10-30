@@ -1,7 +1,7 @@
 // Importação de Pages
 import loginPage from "../support/pages/loginPage";
 import inventarioPage from "../support/pages/inventarioPage";
-import detalheProdutoPage from "../support/pages/detalheProdutoPage.js";
+import detalheProdutoPage from "../support/pages/detalheProdutoPage";
 
 // Importação de dados
 import userData from "../fixtures/userData.json";
