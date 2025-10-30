@@ -58,7 +58,7 @@ jobs:
         if: always()
         with:
           name: mochawesome-reports
-          path: cypress/reports # Caminho da pasta dos relatórios
+          path: cypress/reports/html # Caminho da pasta dos relatórios
           retention-days: 7 # Guarda os artefatos por 7 dias
 
       # 7. Upload dos vídeos de execução do Cypress
